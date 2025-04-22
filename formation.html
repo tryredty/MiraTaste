@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
   <title>Formation</title>
   <style>
     * {
@@ -95,8 +98,8 @@
 </head>
 <body>
   <header>
-    <h1>Formations</h1>
-    <p>Apprenez les secrets de notre pâtisserie grâce à nos formations professionnelles et accessibles à tous.</p>
+    <h1 data-aos="fade-down" data-aos-duration="1500">Formations</h1>
+    <p data-aos="fade-down" data-aos-duration="2000">Apprenez les secrets de notre pâtisserie grâce à nos formations professionnelles et accessibles à tous.</p>
   </header>
 
   <div class="formation-container">
@@ -106,7 +109,7 @@
     </div>
     <div class="command-container" id="commandArea">
       <a id="whatsappLink" href="https://wa.me/221771234567?text=Je%20souhaite%20m'inscrire%20à%20la%20formation%20en%20p%C3%A2tisserie" target="_blank">
-        <div class="command">S'inscrire sur WhatsApp</div>
+        <div  data-aos="fade-down" data-aos-duration="2000" class="command">S'inscrire sur WhatsApp</div>
       </a>
     </div>
   </div>
@@ -120,5 +123,11 @@
       document.getElementById('whatsappLink').click();
     });
   </script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 </body>
 </html>
