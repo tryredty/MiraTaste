@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petits Fours</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header, footer {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+     
+    }
+
+    .carousel-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: block;
+      margin-top: 40px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(214, 51, 132, 0.8);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .arrow:hover {
+      background-color: #c2185b;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    .description {
+      margin-top: 20px;
+      text-align: center;
+      background: #ffe6f0;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 5px solid #d63384;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+    }
+
+    .command-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .command-container a {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .command-container a:hover .command {
+      background-color: #c2185b;
+      transform: scale(1.05);
+    }
+
+    .command {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-bottom: 217px;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Petits Fours</h1>
+    <p>Un assortiment raffiné de petits fours sucrés et salés pour toutes vos occasions.</p>
+  </header>
+
+  <div class="carousel-container">
+    <button class="arrow left" onclick="prevFour()">&#10094;</button>
+    <img id="fourImage" class="carousel-image" src="minis1.jpg" alt="Petit Four 1">
+    <button class="arrow right" onclick="nextFour()">&#10095;</button>
+  </div>
+  
+  <div class="description" id="fourDescription">
+    Assortiment Sucré - mini éclairs, tartelettes, choux : 5000 FCFA
+  </div>
+
+  <div class="command-container" id="commandArea">
+    <a id="whatsappLink" href="https://wa.me/221771234567?text=Je%20souhaite%20commander%20l%27Assortiment%20Sucr%C3%A9" target="_blank">
+      <div class="command">Commander sur WhatsApp</div>
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2025 Pâtisserie Douceur. Tous droits réservés.
+  </footer>
+
+  <script>
+    const fours = [
+     
+      {
+        image: 'minis1.jpg',
+        name: 'Assortiment Salé',
+        desc: 'Assortiment Salé - mini quiches, croissants farcis, feuilletés : 6000 FCFA',
+        message: "Je souhaite commander l'Assortiment Salé"
+      },
+      {
+        image: 'minis2.jpg',
+        name: 'Mix Sucré-Salé',
+        desc: 'Mix Sucré-Salé - sélection variée pour tous les goûts : 7000 FCFA',
+        message: "Je souhaite commander le Mix Sucré-Salé"
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function updateFour() {
+      const img = document.getElementById('fourImage');
+      const desc = document.getElementById('fourDescription');
+      const link = document.getElementById('whatsappLink');
+
+      img.src = fours[currentIndex].image;
+      desc.textContent = fours[currentIndex].desc;
+      link.href = `https://wa.me/221771234567?text=${encodeURIComponent(fours[currentIndex].message)}`;
+    }
+
+    function nextFour() {
+      currentIndex = (currentIndex + 1) % fours.length;
+      updateFour();
+    }
+
+    function prevFour() {
+      currentIndex = (currentIndex - 1 + fours.length) % fours.length;
+      updateFour();
+    }
+
+    document.getElementById('commandArea').addEventListener('click', function() {
+      document.getElementById('whatsappLink').click();
+    });
+  </script>
+</body>
+</html>
+
+  

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gâteaux de Mariage</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header, footer {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .carousel-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: block;
+      margin-top: 40px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(214, 51, 132, 0.8);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .arrow:hover {
+      background-color: #c2185b;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    .description {
+      margin-top: 20px;
+      text-align: center;
+      background: #ffe6f0;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 5px solid #d63384;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+    }
+
+    .command-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .command-container a {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .command-container a:hover .command {
+      background-color: #c2185b;
+      transform: scale(1.05);
+    }
+
+    .command {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-bottom: 217px;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gâteaux de Mariage</h1>
+    <p>Des créations élégantes et délicieuses pour sublimer votre jour spécial.</p>
+  </header>
+
+  <div class="carousel-container">
+    <button class="arrow left" onclick="prevCake()">&#10094;</button>
+    <img id="cakeImage" class="carousel-image" src="gateaux5.jpg" alt="Gâteau 1">
+    <button class="arrow right" onclick="nextCake()">&#10095;</button>
+  </div>
+
+  <div class="description" id="cakeDescription">
+    Gâteau Mariage Classique - 3 étages, crème légère, décoration florale : 50 000 FCFA
+  </div>
+
+  <div class="command-container" id="commandArea">
+    <a id="whatsappLink" href="https://wa.me/221771234567?text=Je%20souhaite%20commander%20le%20Gâteau%20Mariage%20Classique" target="_blank">
+      <div class="command">Commander sur WhatsApp</div>
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2025 Pâtisserie Douceur. Tous droits réservés.
+  </footer>
+
+  <script>
+    const cakes = [
+      {
+        image: 'gateaux5.jpg',
+        name: 'Gâteau Mariage Classique',
+        desc: 'Gâteau Mariage Classique - 2 étages, crème légère, décoration florale : 50 000 FCFA',
+        message: 'Je souhaite commander le Gâteau Mariage Classique'
+      },
+  
+      {
+        image: 'gateaux8.png',
+        name: 'Gâteau Mariage Prestige',
+        desc: 'Gâteau Mariage Prestige - personnalisé selon vos envies : prix sur demande',
+        message: 'Je souhaite commander le Gâteau Mariage Prestige'
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function updateCake() {
+      const img = document.getElementById('cakeImage');
+      const desc = document.getElementById('cakeDescription');
+      const link = document.getElementById('whatsappLink');
+
+      img.src = cakes[currentIndex].image;
+      desc.textContent = cakes[currentIndex].desc;
+      link.href = `https://wa.me/221771234567?text=${encodeURIComponent(cakes[currentIndex].message)}`;
+    }
+
+    function nextCake() {
+      currentIndex = (currentIndex + 1) % cakes.length;
+      updateCake();
+    }
+
+    function prevCake() {
+      currentIndex = (currentIndex - 1 + cakes.length) % cakes.length;
+      updateCake();
+    }
+
+    document.getElementById('commandArea').addEventListener('click', function() {
+      document.getElementById('whatsappLink').click();
+    });
+  </script>
+</body>
+</html>

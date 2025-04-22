@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header, footer {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .carousel-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: block;
+      margin-top: 40px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(214, 51, 132, 0.8);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .arrow:hover {
+      background-color: #c2185b;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    .description {
+      margin-top: 20px;
+      text-align: center;
+      background: #ffe6f0;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 5px solid #d63384;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+    }
+
+    .command-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .command-container a {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .command-container a:hover .command {
+      background-color: #c2185b;
+      transform: scale(1.05);
+    }
+
+    .command {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 80px;
+      margin-bottom: 217px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nos Packs</h1>
+    <p>Découvrez nos packs gourmands personnalisables avec gâteaux, biscuits, chocolats et jus !</p>
+  </header>
+
+  <div class="carousel-container">
+    <button class="arrow left" onclick="prevPack()">&#10094;</button>
+    <img id="packImage" class="carousel-image" src="pack3.jpg" alt="Pack 1">
+    <button class="arrow right" onclick="nextPack()">&#10095;</button>
+  </div>
+
+  <div class="description" id="packDescription">
+    Pack Douceur - 1 gâteau, 1 biscuit, 1 jus : 5000 - 10000 FCFA
+  </div>
+
+  <div class="command-container" id="commandArea">
+    <a id="whatsappLink" href="https://wa.me/221771234567?text=Je%20souhaite%20commander%20le%20Pack%20Douceur" target="_blank">
+      <div class="command">Commander sur WhatsApp</div>
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2025 Pâtisserie Douceur. Tous droits réservés.
+  </footer>
+
+  <script>
+    const packs = [
+      {
+        image: 'pack3.jpg',
+        name: 'Pack Douceur',
+        desc: 'Pack Douceur - 1 gâteau, 1 biscuit, 1 jus : 5000 - 10000 FCFA ',
+        message: 'Je souhaite commander le Pack Douceur'
+      },
+      {
+        image: 'pack2.jpg',
+        name: 'Pack Gourmand',
+        desc: 'Pack Gourmand - 2 mini gâteaux, 1 chocolat, 1 jus : 10000 - 20000 FCFA',
+        message: 'Je souhaite commander le Pack Gourmand'
+      },
+      {
+        image: 'pack4.jpg',
+        name: 'Pack Prestige',
+        desc: 'Pack Prestige - gâteau personnalisé + assortiments : à partir de 20000 FCFA',
+        message: 'Je souhaite commander le Pack Prestige'
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function updatePack() {
+      const img = document.getElementById('packImage');
+      const desc = document.getElementById('packDescription');
+      const link = document.getElementById('whatsappLink');
+
+      img.src = packs[currentIndex].image;
+      desc.textContent = packs[currentIndex].desc;
+      link.href = `https://wa.me/221771234567?text=${encodeURIComponent(packs[currentIndex].message)}`;
+    }
+
+    function nextPack() {
+      currentIndex = (currentIndex + 1) % packs.length;
+      updatePack();
+    }
+
+    function prevPack() {
+      currentIndex = (currentIndex - 1 + packs.length) % packs.length;
+      updatePack();
+    }
+
+    document.getElementById('commandArea').addEventListener('click', function() {
+      document.getElementById('whatsappLink').click();
+    });
+  </script>
+</body>
+</html>
