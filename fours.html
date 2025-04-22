@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
   <title>Petits Fours</title>
   <style>
     * {
@@ -126,8 +129,8 @@
 </head>
 <body>
   <header>
-    <h1>Petits Fours</h1>
-    <p>Un assortiment raffiné de petits fours sucrés et salés pour toutes vos occasions.</p>
+    <h1 data-aos="fade-down" data-aos-duration="1500">Petits Fours</h1>
+    <p data-aos="fade-down" data-aos-duration="2000">Un assortiment raffiné de petits fours sucrés et salés pour toutes vos occasions.</p>
   </header>
 
   <div class="carousel-container">
@@ -142,7 +145,7 @@
 
   <div class="command-container" id="commandArea">
     <a id="whatsappLink" href="https://wa.me/221771234567?text=Je%20souhaite%20commander%20l%27Assortiment%20Sucr%C3%A9" target="_blank">
-      <div class="command">Commander sur WhatsApp</div>
+      <div data-aos="fade-down" data-aos-duration="2000" class="command">Commander sur WhatsApp</div>
     </a>
   </div>
 
@@ -193,7 +196,11 @@
       document.getElementById('whatsappLink').click();
     });
   </script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
 </body>
 </html>
-
-  
