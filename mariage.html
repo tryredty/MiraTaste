@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
   <title>Gâteaux de Mariage</title>
   <style>
     * {
@@ -125,8 +128,8 @@
 </head>
 <body>
   <header>
-    <h1>Gâteaux de Mariage</h1>
-    <p>Des créations élégantes et délicieuses pour sublimer votre jour spécial.</p>
+    <h1 data-aos="fade-down" data-aos-duration="1500">Gâteaux de Mariage</h1>
+    <p data-aos="fade-down" data-aos-duration="2000">Des créations élégantes et délicieuses pour sublimer votre jour spécial.</p>
   </header>
 
   <div class="carousel-container">
@@ -141,7 +144,7 @@
 
   <div class="command-container" id="commandArea">
     <a id="whatsappLink" href="https://wa.me/221771234567?text=Je%20souhaite%20commander%20le%20Gâteau%20Mariage%20Classique" target="_blank">
-      <div class="command">Commander sur WhatsApp</div>
+      <div data-aos="fade-down" data-aos-duration="2000" class="command">Commander sur WhatsApp</div>
     </a>
   </div>
 
@@ -192,5 +195,12 @@
       document.getElementById('whatsappLink').click();
     });
   </script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 </body>
 </html>
+
